@@ -1,0 +1,60 @@
+/* estado inicial de los nuevos involucrados*/
+
+#involucrado2 {
+	opacity: 0;
+	visibility: hidden;
+	height: 0px;
+	transition: opacity 1.5s, height 1s;
+  }
+
+  #involucrado3 {
+	opacity: 0;
+	visibility: hidden;
+	height: 0px;
+	transition: opacity 1.5s, height 1s;
+  }
+  
+
+
+/* AQUI COMIENZA EL ESTILO DE LA TABLA */
+#cajaTabla {
+	border: 2px solid black;
+	border-radius: 10px;
+	margin-left: 10px;
+	margin-right:10px;
+	display: block;
+	overflow-y: hidden;
+	overflow-x:auto;
+	min-height: 300px;
+	max-width: 100%;
+	}
+	
+table {
+	border-collapse: collapse;
+	border-radius: 10px;
+	overflow: hidden;
+	width:100%;
+	}
+
+th, th, td {
+	padding:5px;
+	text-align: center;
+}
+
+.filatitulo {
+	background: #B3F2FF;
+	border-color: #B3F2FF;
+	border-bottom: solid 3px black;
+	}
+
+.filatitulo:hover {
+	background: #B3F2FF;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+tr:hover {
+	background-color:#abdefa;
+}

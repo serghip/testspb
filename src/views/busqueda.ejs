@@ -1,0 +1,98 @@
+<form id="formulario" action="/visualizacion/resultado" method="POST">
+  <p> Seleccione filtro de busqueda: </p>
+  <!-- FILTRO 1 -->
+  <div name="cajaFiltro" id="involucrado">
+    <select class="filtro" id="idfiltro" name="filtro" onchange="cambiar()" required>
+      <option value="0"> Seleccione
+      <option value="1"> Fecha
+      <option value="2"> Dia de semana
+      <option value="3"> Hora aproximada
+      <option value="4"> Complejo
+      <option value="5"> Unidad
+      <option value="6"> Tipo
+      <option value="7"> Subtipo
+      <option value="8"> Relacion en el hecho
+      <option value="9"> Involucrado
+      <option value="10"> Nombre completo
+      <option value="11"> ID
+      <option value="12"> Genero
+      <option value="13"> Edad
+    </select>
+    <select class="opcion" id="idopcion" name="subfiltro">
+      <option value="-"> -
+    </select>
+    <input id="idfecha" name="fecha" type="date" style="display:none"> </input>
+    <input id="idnombre" name="nombre" type="text" style="display:none"> </input>
+    <input id="idid" name="nroidentificacion" type="number" style="display:none"> </input>
+    <input id="idedad" name="edad" type="number" style="display:none"></input>
+    <div id="cajaBotones">
+      <button id="idBotonBuscar" type="submit" class="boton"> Buscar datos </button>
+      <button id="idBotonAgregar" type="button" class="boton" onclick="addElemento();"> Agregar filtro</button>
+      <button id="idBotonOcultar" type="button" class="boton" style='visibility: hidden;'
+        onclick="removeElemento();">Remover filtro </button>
+    </div>
+  </div>
+
+  <!-- FILTRO 2-->
+
+  <div name="cajaFiltro2" id="involucrado2">
+    <h5> ESTA SECCION NO ESTA INDEXADA A LA BASE DE DATOS, POR LO QUE MOMENTANEAMENTE ESTA DISABLED</h5>
+    <select class="filtro" id="idfiltro2" name="filtro2" onchange="cambiar2()" disabled>
+      <option value="0"> Seleccione
+      <option value="1"> Fecha
+      <option value="2"> Dia de semana
+      <option value="3"> Hora aproximada
+      <option value="4"> Complejo
+      <option value="5"> Destino
+      <option value="6"> Tipo
+      <option value="7"> Subtipo
+      <option value="8"> Relacion en el hecho
+      <option value="9"> Involucrado
+      <option value="10"> Nombre completo
+      <option value="11"> ID
+      <option value="12"> Genero
+      <option value="13"> Edad
+    </select>
+    <select class="opcion" id="idopcion2" name="opt2" disabled>
+      <option value="-"> -
+        <input id="idfecha2" type="date" style="display:none" disabled> </input>
+        <input id="idnombre2" type="text" style="display:none" disabled> </input>
+        <input id="idid2" type="number" style="display:none" disabled> </input>
+        <input id="idedad2" type="number" autocomplete="off" min="18" max="80" value="18" style="display:none" disabled>
+        </input>
+    </select>
+    <input class="boton" type="button" name="botonRemover" id="Remover" onclick="removeElemento();"
+      value="Remover filtro">
+  </div>
+
+  <!-- FILTRO 3 -->
+  <div name="cajaFiltro3" id="involucrado3">
+    <select class="filtro" id="idfiltro3" name="filtro3" onchange="cambiar3()" disabled>
+      <option value="0"> Seleccione
+      <option value="1"> Fecha
+      <option value="2"> Dia de semana
+      <option value="3"> Hora aproximada
+      <option value="4"> Complejo
+      <option value="5"> Destino
+      <option value="6"> Tipo
+      <option value="7"> Subtipo
+      <option value="8"> Relacion en el hecho
+      <option value="9"> Involucrado
+      <option value="10"> Nombre completo
+      <option value="11"> ID
+      <option value="12"> Genero
+      <option value="13"> Edad
+    </select>
+    <select class="opcion" id="idopcion3" name="opt3" disabled>
+      <option value="-"> -
+        <input id="idfecha3" type="date" style="display:none" disabled> </input>
+        <input id="idnombre3" type="text" style="display:none" disabled> </input>
+        <input id="idid3" type="number" style="display:none" disabled> </input>
+        <input id="idedad3" type="range" autocomplete="off" min="18" max="80" value="18" style="display:none" disabled>
+        </input>
+    </select>
+  </div>
+
+
+
+</form>

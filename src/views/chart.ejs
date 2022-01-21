@@ -1,0 +1,96 @@
+<div id="chart">
+    <div id="primerafila">
+        <div id="primero">
+                <div id="muerte" class="afueraprimero">
+                    <div id="muertetexto"> MUERTES </div>
+                    <div id="muertenro" ></div>
+                </div>
+                <div id="homicidio" class="adentroprimero">
+                    <div id="homicidiotexto">HOMICIDIO</div> 
+                    <div id="homicidionro"></div>
+                </div>
+                <div id="suicidio" class="adentroprimero">
+                    <div id="suicidiotexto">SUICIDIO</div>  
+                    <div id="suicidionro"> </div>
+                </div> 
+                <div id="otra" class="adentroprimero">
+                    <div id="otratexto">OTRAS </br> CAUSAS</div> 
+                    <div id="otranro"> </div>
+                </div>
+                
+        </div> 
+        
+        <div id="segundo">
+            
+        <div id="segundoA">            
+            <div id="textosegundoA"> Seleccione para realizar consultas por año</div>
+            <div id="cajaconsulta" class="cajaconsulta">
+                <input id="botonseleccionar" type="button" class="botonseleccionar" value="Seleccionar">
+                <div id="cajacheck" class="cajacheck">
+                    <div class="checkbox">
+                        <input id="check2018" type="checkbox" value="2018" checked><label for=check2018> 2018</label>
+                        <input id="check2019" type="checkbox" value="2019" checked><label for=check2019> 2019</label>
+                        <input id="check2020" type="checkbox" value="2020" checked><label for=check2020> 2020</label>
+                        <input id="check2021" type="checkbox" value="2021" checked><label for=check2021> 2021</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="segundoB">
+            <div id="textosegundoB"> Seleccione para realizar consultas por tipo de muerte</div>
+            <div id="cajaconsultaB" class="cajaconsulta">
+                <input id="botonseleccionarB" type="button" class="botonseleccionar" value="Seleccionar">
+                <div id="cajacheckB" class="cajacheck">
+                    <div class="checkbox">
+                        <input id="checkaveriguacion" type="checkbox" value="averiguacion"><label for=checkaveriguacion> AVERIGUACIÓN </label>
+                        <input id="checknotraumatica" type="checkbox" value="notraumatica"><label for=checknotraumatica> NO TRAUMÁTICA</label>
+                        <input id="checktraumatica" type="checkbox" value="traumatica"><label for=checktraumatica> TRAUMÁTICA</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    
+    </div>
+    
+    <div id="segundafila">
+        <div id="tercero">
+                <canvas id="graficotercero"></canvas>
+        </div>
+    
+        <label id="cuarto">
+            <div id="cuartoA">
+                <canvas id="graficocuarto"></canvas>
+            </div>
+            <div id='cuartoB'>
+                <TABLE id='tablacuartoB'>
+                    <TR class="filatitulo">
+                        <TH id="titulo1" class="titulo"> SUBTIPO DE MUERTES TRAUMATICAS </TH>
+                        <TH id="titulo2" class="titulo"> TOTAL</TH>
+                    </TR>
+                    <TR class="fila" id="fila1">
+                        <TD class="homicidio">HOMICIDIO</TD>
+                        <TD id="totalhomicidio" class="total"></TD>
+                    </TR>
+                    <TR class="fila" id="fila2">
+                        <TD class="suicidio"> SUICIDIO </TD>
+                        <TD id="totalsuicidio" class="total"></TD>
+                    </TR>
+                </TABLE>
+            </div>
+        </label>
+    
+    </div>
+    
+    <div id="tercerafila">
+        <div id="quinto">
+                <canvas id="graficoquinto"></canvas>
+        </div>
+    
+        <div id="sexto">
+            <canvas id="graficosexto"></canvas>
+        </div>
+    </div>
+    </div>

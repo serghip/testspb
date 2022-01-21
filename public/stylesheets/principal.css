@@ -1,0 +1,149 @@
+/* Quita los seteos de fabrica*/
+*{
+	margin:0px;
+	padding:0px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* HEADER */
+header {
+	background: rgb(8,207,223);
+	background: linear-gradient(90deg, rgba(8,207,223,1) 0%, rgba(173,247,255,0.8155637254901961) 46%, rgba(9,105,121,1) 99%);
+	display:flex;
+	color: white;
+	font-family: arial;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding: 12px;
+	min-height: 55px;
+		}
+
+#iduunidaddegestionyestadistica {
+	width: 79%;
+}	
+
+#idcajaspb {
+	display:flex;
+	width: 23%;
+	overflow: hidden;
+	}
+
+#headertitulo1 {
+	margin-top: 15px;
+	margin-left: 5px;
+	}
+
+#headertitulo2 {
+	margin-top: 20px;
+	margin-right: 5px;
+	}
+
+#headertitulo3 {
+	margin-top: 10px;
+	margin-right: 5px;
+}
+@media (max-width:1080px) {
+	#headertitulo3 {
+	display:none;
+	}
+	#headertitulo2 {
+	margin-left: 100px;
+	}
+}
+
+@media (max-width:800px) {
+	#headertitulo3 {
+	display:none;
+	}
+	#headertitulo2 {
+	display:none;
+	}
+}
+
+/* MENU DESPLEGABLE*/
+
+.navegable {
+	margin-left: 10px;
+	margin-right: 10px;
+	background: rgb(201,201,201);
+	background: linear-gradient(90deg, rgba(201,201,201,1) 0%, rgba(255,255,255,0.9220063025210083) 64%, rgba(126,126,126,1) 100%);
+	display:block;
+	}
+
+.navegable ul {
+	list-style: none;	
+	background: #e9e7e7;
+}
+
+.menu > li {
+	display:inline-block;
+}
+
+.menu > li > a {
+	text-decoration:none;
+	color: black;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 20px;
+	border-width: 1px;	
+	border-color: #dddddd;
+}
+
+#menu2 {
+	margin-right: -10px;
+	margin-left: 10px;
+	padding: 10px;
+}
+
+.menu li a:hover {
+	color:grey;
+	transition: all .3s;
+}
+
+.submenu {
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.8s;
+	margin-top: 10px;
+}
+
+.submenu li a {
+	display:block;
+	text-decoration:none;
+	color: black;
+	font-family: arial;
+	font-weight: bold;
+	border-width: 1px;
+	border-style:solid;	
+	border-color: #dddddd;
+	margin-left: -32px;
+	padding: 8px;
+}
+
+.menu li:hover .submenu{
+	visibility: visible;
+	opacity: 1;
+}
+
+/* SECCION titulo*/
+.seccion {
+	background: rgb(8,207,223);
+	background: linear-gradient(90deg, rgba(8,207,223,1) 0%, rgba(173,247,255,0.8155637254901961) 46%, rgba(9,105,121,1) 99%);
+	display: flex;
+	color: white;
+	font-family: arial;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+#idtextoseccion{
+	padding: 5px;
+}

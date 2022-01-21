@@ -1,0 +1,246 @@
+<html lang="es">
+  <head>
+    <title> Visualizacion </title>
+    <!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/stylesheets/visualizacion.css">
+  <link rel="stylesheet" href="/stylesheets/busqueda.css">
+  <link rel="stylesheet" href="/stylesheets/principal.css">
+  </head>
+
+   <!-- EJS HEADER Y PARTIALS-->
+   <%- include("./header") %>
+   <%- include("./nav") %>
+ 
+ <!--encabezado seccion cargar -->
+<body>
+    <form id="formulario" action="/visualizacion/resultado" method="POST">
+      <p> Seleccione filtro de busqueda: </p>
+      <!-- FILTRO 1 -->
+      <div name="cajaFiltro" id="involucrado">
+        <select class="filtro" id="idfiltro" name="filtro" onchange="cambiar()" required>
+          <option value="0"> Seleccione
+          <option value="1"> Fecha
+          <option value="2"> Dia de semana
+          <option value="3"> Hora aproximada
+          <option value="4"> Complejo
+          <option value="5"> Unidad
+          <option value="6"> Tipo
+          <option value="7"> Subtipo
+          <option value="8"> Relacion en el hecho
+          <option value="9"> Involucrado
+          <option value="10"> Nombre completo
+          <option value="11"> ID
+          <option value="12"> Genero
+          <option value="13"> Edad
+        </select>
+        <select class="opcion" id="idopcion" name="subfiltro">
+          <option value="-"> -
+        </select>
+        <input id="idfecha" name="fecha" type="date" style="display:none"> </input>
+        <input id="idnombre" name="nombre" type="text" style="display:none"> </input>
+        <input id="idid" name="nroidentificacion" type="number" style="display:none"> </input>
+        <input id="idedad" name="edad" type="number" style="display:none"></input>
+        <div id="Cajabotones">
+          <button id="idBotonBuscar" type="submit" class="boton"> Buscar datos </button>
+          <button id="idBotonAgregar" type="button" class="boton" onclick="addElemento();"> Agregar filtro</button>
+        </div>
+        <button id="idBotonOcultar" type="button" class="boton" style='visibility: hidden;'
+          onclick="removeElemento();">Remover filtro </button>
+      </div>
+      <!-- FILTRO 2-->
+  
+      <div name="cajaFiltro2" id="involucrado2">
+        <h5> ESTA SECCION NO ESTA INDEXADA A LA BASE DE DATOS, POR LO QUE MOMENTANEAMENTE ESTA DISABLED</h5>
+        <select class="filtro" id="idfiltro2" name="filtro2" onchange="cambiar2()" disabled>
+          <option value="0"> Seleccione
+          <option value="1"> Fecha
+          <option value="2"> Dia de semana
+          <option value="3"> Hora aproximada
+          <option value="4"> Complejo
+          <option value="5"> Destino
+          <option value="6"> Tipo
+          <option value="7"> Subtipo
+          <option value="8"> Relacion en el hecho
+          <option value="9"> Involucrado
+          <option value="10"> Nombre completo
+          <option value="11"> ID
+          <option value="12"> Genero
+          <option value="13"> Edad
+        </select>
+        <select class="opcion" id="idopcion2" name="opt2" disabled>
+          <option value="-"> -
+            <input id="idfecha2" type="date" style="display:none" disabled> </input>
+            <input id="idnombre2" type="text" style="display:none" disabled> </input>
+            <input id="idid2" type="number" style="display:none" disabled> </input>
+            <input id="idedad2" type="number" autocomplete="off" min="18" max="80" value="18" style="display:none"
+              disabled> </input>
+        </select>
+        <input class="boton" type="button" name="botonRemover" id="Remover" onclick="removeElemento();"
+          value="Remover involucrado">
+      </div>
+  
+      <!-- FILTRO 3 -->
+      <div name="cajaFiltro3" id="involucrado3">
+        <select class="filtro" id="idfiltro3" name="filtro3" onchange="cambiar3()" disabled>
+          <option value="0"> Seleccione
+          <option value="1"> Fecha
+          <option value="2"> Dia de semana
+          <option value="3"> Hora aproximada
+          <option value="4"> Complejo
+          <option value="5"> Destino
+          <option value="6"> Tipo
+          <option value="7"> Subtipo
+          <option value="8"> Relacion en el hecho
+          <option value="9"> Involucrado
+          <option value="10"> Nombre completo
+          <option value="11"> ID
+          <option value="12"> Genero
+          <option value="13"> Edad
+        </select>
+        <select class="opcion" id="idopcion3" name="opt3" disabled>
+          <option value="-"> -
+            <input id="idfecha3" type="date" style="display:none" disabled> </input>
+            <input id="idnombre3" type="text" style="display:none" disabled> </input>
+            <input id="idid3" type="number" style="display:none" disabled> </input>
+            <input id="idedad3" type="range" autocomplete="off" min="18" max="80" value="18" style="display:none"
+              disabled> </input>
+        </select>
+      </div>
+  
+  
+  
+    </form>
+    <!-- Tabla Personas  -->
+    <div id="cajaTabla">
+      <table id="tablaPersonas" class="table mt-4">
+        <thead>
+          <tr>
+            <th style="display: none;">ID</th>
+            <th>Fecha</th>
+            <th>Dia de semana</th>
+            <th>Hora</th>
+            <th>Complejo</th>
+            <th>Unidad</th>
+            <th>Tipo</th>
+            <th>Subtipo</th>
+            <th>Relacion en el hecho</th>
+            <th>Involucrado</th>
+            <th>Nombre</th>
+            <th>Nro ID Crimen</th>
+            <th>Genero</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody><% personas.forEach( (persona)=> { %>
+          <tr>
+              <td style="display: none;"><%= persona._id %></td>
+              <td><%= persona.fecha %></td>
+              <td><%= persona.diadesemana %></td>
+              <td><%= persona.hora %></td>
+              <td><%= persona.complejo %></td>
+              <td><%= persona.unidad %></td>
+              <td><%= persona.tipo %></td>
+              <td><%= persona.subtipo %></td>
+              <td><%= persona.relacionenelhecho %></td>
+              <td><%= persona.involucrado %></td>
+              <td><%= persona.nombre %></td>
+              <td><%= persona.nroidentificacion %></td>
+              <td><%= persona.genero %></td>
+              <td><%= persona.edad %></td>
+              <td><a type="button" class="btnEditar btn btn-outline-primary bi bi-pencil"></a><a href="/borrar/<%= persona._id %>" class="btn btn-outline-danger bi bi-trash"></a></td>
+            </tr><% }) %>
+        </tbody>
+      </table>
+    </div>
+  
+  <!-- Modal para Editar   -->
+  <div id="modalPersona" class="modal fade" tabindex="-1" aria-labelledby="modalPersona" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="exampleModalLabel">Editar informacion</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/editar" method="POST">
+            <input name="id_editar" id="id_editar">
+            <div class="mb-3">
+              <label for="fecha_editar" class="col-form-label">Fecha:</label>
+              <input id="fecha_editar" name="fecha_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="diadesemana_editar" class="col-form-label">Dia de semana:</label>
+              <input id="diadesemana_editar" name="diadesemana_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="hora_editar" class="col-form-label">Hora:</label>
+              <input id="hora_editar" name="hora_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="complejo_editar" class="col-form-label">Complejo:</label>
+              <input id="complejo_editar" name="complejo_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="unidad_editar" class="col-form-label">Unidad:</label>
+              <input id="unidad_editar" name="unidad_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="tipo_editar" class="col-form-label">Tipo:</label>
+              <input id="tipo_editar" name="tipo_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="subtipo_editar" class="col-form-label">Subtipo:</label>
+              <input id="subtipo_editar" name="subtipo_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="relacionenelhecho_editar" class="col-form-label">Relacion en el hecho:</label>
+              <input id="relacionenelhecho_editar" name="relacionenelhecho_editar" type="text" class="form-control"
+                value="">
+            </div>
+            <div class="mb-3">
+              <label for="involucrado_editar" class="col-form-label">Involucrado:</label>
+              <input id="involucrado_editar" name="involucrado_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="nombre_editar" class="col-form-label">Nombre:</label>
+              <input id="nombre_editar" name="nombre_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="nroidentificacion_editar" class="col-form-label">Nro de identificacion:</label>
+              <input id="nroidentificacion_editar" name="nroidentificacion_editar" type="text" class="form-control"
+                value="">
+            </div>
+            <div class="mb-3">
+              <label for="genero_editar" class="col-form-label">Genero:</label>
+              <input id="genero_editar" name="genero_editar" type="text" class="form-control" value="">
+            </div>
+            <div class="mb-3">
+              <label for="edad_editar" class="col-form-label">Edad:</label>
+              <input id="edad_editar" name="edad_editar" type="text" class="form-control" value="">
+            </div>
+  
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+  </body>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="/js/code.js"></script>
+<script type="text/javascript" src="/js/busqueda.js"></script>
+<script type="text/javascript" src="/js/botonAddRemove.js"></script>
+</html>

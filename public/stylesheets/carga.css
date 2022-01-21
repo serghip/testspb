@@ -1,0 +1,105 @@
+/* FORMULARIO */
+
+.container h2 {
+	margin-left: 15px;
+	margin-bottom: 5px;
+}
+
+form {
+	margin-left: 5px;
+	padding-top:10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom:10px;
+	background: rgb(156,243,250);
+	background: linear-gradient(90deg, rgba(156,243,250,1) 0%, rgba(61,218,244,1) 99%);border-radius: 10px;
+	border: 2px solid black;
+	padding: 10px;
+	font-size: 15px;
+	}
+	
+.titulo {
+	margin: 5px;
+	display:inline-block;
+	width: 25%;
+}
+	
+.input{
+	margin-bottom: 10px;
+	display:flex;
+	width: 97%;
+	overflow: hidden;
+	height: 30px;
+	border-radius: 10px;
+	cursor:pointer;
+	outline: none;
+	border: 0.5px grey solid;
+	box-shadow: none;
+}
+
+.complejoOpcion{
+	display: none;
+	visibility: hidden;
+}
+
+.boton {
+	font-family:arial;
+	background: grey;
+	color:white;
+	border-radius: 5px;
+	outline: none;
+	margin-top: 10px;
+}
+
+.boton:hover {
+	opacity:0.8;
+	outline: none;
+}
+
+#Agregar , #Cargar , #Remover {
+	width:150px;
+	height:30px;
+	cursor:pointer;
+	margin-right:10px;
+	
+}
+
+/* MEDIAs de formulario*/
+@media (max-width:1080px) {
+	.titulo {
+		margin: 5px;
+		display:inline-block;
+		width: 40%;
+	}
+}
+
+@media (max-width:800px) {
+	.titulo {
+		margin: 5px;
+		display:inline-block;
+		width: 90%;
+		}
+	.input {
+		display:flex;
+		width: 100%;
+		overflow: hidden;
+	}
+	#diadesemana , #complejo , #tipo , #relacionenelhecho , #nombre , #genero {
+		background:#e9e7e7;
+	}
+}
+/* estado inicial de los nuevos involucrados*/
+
+#involucrado2 {
+      opacity: 0;
+      visibility: hidden;
+      height: 0px;
+      transition: opacity 1.5s, height 1s;
+    }
+  
+    #involucrado3 {
+      opacity: 0;
+      visibility: hidden;
+      height: 0px;
+      transition: opacity 1.5s, height 1s;
+    }

@@ -1,0 +1,303 @@
+/* Quita los seteos de fabrica*/
+*{
+	margin:0px;
+	padding:0px;
+	-webkit-box-align: border box;
+	-moz-box-sizing: border box;
+	box-sizing: border box;
+}
+
+body{
+    border: 2px solid black;
+    }
+
+    @media (max-width:800px) {
+        /*PRIMERO*/
+        #primero{
+            width: 100%;
+        }
+        #homicidio , #suicidio , #otra{
+            display: none;
+        }
+
+        #muertenro{
+            min-height: 175px;
+        }
+        
+        /*SEGUNDO*/
+        #segundoB{
+            margin-top: 10px;
+        }
+        #botonseleccionar {
+            display: none;
+        }
+        #botonseleccionarB {
+            display: none;
+        }        
+    }
+    
+    #chart{
+        margin-right: 8px;
+    }
+    
+    /* PRIMERA FILA */
+    
+    #primerafila{
+        display:flex;
+    }
+        
+    /* PRIMERO: ESTADISTICA DE MUERTES */
+    #primero{
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        width: 50%;
+        display: flex;
+        vertical-align: middle;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        }
+    
+    #muerte , #homicidio , #suicidio , #otra {
+       vertical-align:text-top;
+       margin: 10px;
+       margin-top: 0px;
+    }
+   
+    
+    #muertetexto{
+        background-color:lightgray;
+        font-weight: bold;
+        margin-bottom:10px;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 50px;
+        height: 50px;
+        
+        padding-bottom: 40px;
+        }
+    
+    #muertenro{
+        background-color:lightgray;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 90px;
+        height: 140px;
+        padding-bottom: 40px;   
+        padding-top: 20px;
+        }
+    
+    .afueraprimero{
+        width: 90%;
+    }
+
+    .adentroprimero{
+        background-color:lightgray;
+        width: 30%;
+        height: 200px;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 5px;    
+    }
+    
+    #homicidiotexto , #suicidiotexto , #otratexto{
+        font-size: small;
+        margin-top: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 40px;
+    }
+    
+    #homicidionro , #suicidionro{
+        line-height: 100px;
+        font-size: x-large;    
+    }
+    #otranro {
+        line-height: 60px;
+        font-size: x-large;
+    }
+    
+    #muertenro{
+        font-size:xx-large
+    }
+    
+    /* SEGUNDO: FILTRO DE SELECCION*/
+    
+    #segundo{
+        width: 50%;
+    }
+    
+ /* SEGUNDO FILTRO DE SELECCION Parte A*/
+ #segundoA{
+    border: 2px lightcyan solid;
+    border-radius: 5px;
+    }
+
+#textosegundoA{
+    border-top-left-radius: 5px;
+    border-top-right-radius:5px;
+    background-color: lightblue;
+    color:white;
+    padding: 5px;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cajaconsulta{
+    background-color:lightgray;
+    padding-left: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius:5px;
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px
+    }
+
+.botonseleccionar{
+    height: 30px;
+    min-width: 110px;
+    max-width: 110px;
+    margin-right: 20px;
+}
+
+
+/* MODICA el seleccionable, en este caso lo oculta*/
+.cajacheck input[type="checkbox"] {
+    display:none;
+}
+
+/* MODICA EL label del checkbox deselecionado, su fondo y su forma. */
+.cajacheck .checkbox label {
+    background: white;
+    border-radius: 3px;
+    padding: 3px;
+    display: inline-block;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    }
+
+/* HOVER del label deselecionado*/
+.cajacheck .checkbox label:hover{
+    opacity: 0.7;
+}
+
+/* MODICA EL RECUADRO DEL CHECK BOX, practicamente creamos uno nuevo para poder darle la forma que querramos*/
+.cajacheck .checkbox label:before {
+    content: "";
+    display:inline-block;
+    border: 2px solid black;
+    border-radius: 6px;
+    width: 10px;
+    height: 10px;
+    }
+
+/* Cuando este seleccionado(checked), edita(+) los estilos de label, su fondo y su forma */
+.cajacheck input[type="checkbox"]:checked + label {
+    background: lightblue;
+    padding: 3px 11px;
+    opacity: 1;
+    border: 1px solid black;
+    border-radius: 6px;
+    }
+
+/* Cuando este seleccionado(checked), edita(+)los estilos de label:before, es decir, el recuadro del checkbox, en este caso lo oculta */
+.cajacheck input[type="checkbox"]:checked + label:before {
+    display: none;
+}
+
+/* SEGUNDO: FILTRO DE SELECCION Parte B*/
+#segundoB{
+    border: 2px lightcyan solid;
+    border-radius: 5px;
+    }
+
+#textosegundoB{
+    border-top-left-radius: 5px;
+    border-top-right-radius:5px;
+    background-color: lightblue;
+    color:white;
+    padding: 5px;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+    
+/* SEGUNDA FILA */
+    
+    #segundafila {
+        display: flex;
+    }
+    
+    
+    /* TERCERO: ESTADISTICA evolucion muerte */
+    #tercero{
+        width: 50%;
+        display: flex;
+        vertical-align: middle;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    /* CUARTO A: ESTADISTICA acumulado muerte */
+    #cuarto{
+        width: 50%;
+        }
+    
+    #cuartoA{
+        display: flex;
+        vertical-align: middle;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    
+    
+    /* CUARTO b: ESTADISTICA acumulado muerte */
+    
+    #tablacuartoB{
+        margin-left: 5px;
+        margin-right: 5px;
+        border-collapse: collapse;
+        width: 98%;
+        }
+    
+    .titulo{
+        border-bottom: 2px solid grey ;
+        }
+    
+    #titulo1{
+        width: 80%;
+        text-align: left;
+        padding: 0px;
+        }
+    
+    #titulo2{
+        width: 50%;
+        text-align: right;
+        padding: 0px;
+    }
+    .fila{
+        border-bottom: 1px solid grey;
+    }
+    
+    .total{
+        text-align: right;
+    }
+    
+    /* TERCERA FILA */
+    #tercerafila{
+        display:flex;
+    }
+    
+    /* QUINTO: ESTADISTICA acumulado establecimiento*/
+    #quinto{
+        width: 50%;
+    }
+    
+    /* SEXTO: ESTADISTICA acumulado genero y edad */
+    #sexto{
+        width: 50%;
+    }
+    

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title> Carga de informe </title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="device-width, initial-scale=1">
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" media="all" href="/stylesheets/carga.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="/stylesheets/principal.css" />
+</head>
+<!-- EJS HEADER Y PARTIALS-->
+<%- include("./header") %>
+<%- include("./nav") %>
+
+<body>
+	<div class="seccion">
+		<h2 id="idtextoseccion">Carga de datos de violencia</h2>
+	</div>
+	<!--FORMULARIO de carga -->
+	<div class="container">
+		<h3>Datos de personas involucradas </h3>
+		<form id="formulario" action="/crear" method="POST">
+			<p class="titulo"> Fecha <input class="input" type="date" min="1950-01-01" max="2023-01-01" id="fecha"
+					name="fecha" required></input> </p>
+			<p class="titulo">Dia de semana
+				<select class="input" id="diadesemana" name="diadesemana" placeholder="Ingrese nombre completo"
+					required>
+					<option value=""> Seleccione </option>
+					<option> Lunes</option>
+					<option> Martes</option>
+					<option> Miercoles</option>
+					<option> Jueves</option>
+					<option> Viernes</option>
+					<option> Sabado</option>
+					<option> Domingo</option>
+				</select>
+			</p>
+			<p class="titulo"> Hora aproximada <select class="input" id="hora" name="hora"
+					placeholder="Seleccione hora aproximada" required>
+					<option value=""> Seleccione </option>
+					<option> 12 A.M. </option>
+					<option> 01 A.M. </option>
+					<option> 02 A.M.</option>
+					<option> 03 A.M.</option>
+				</select></input></p>
+			<!-- el rango horario se ingresa en base a la hora ingresada -->
+			<p class="titulo">Complejo
+				<select class="input" id="complejo" name="complejo" onchange="cambiarUnidad()" required>
+					<option value=""> Seleccione </option>
+					<option value="La plata"> La plata</option>
+					<option value="Magdalena"> Magdalena</option>
+					<option value="Lisandro Olmos"> Lisandro Olmos</option>
+				</select>
+			</p>
+			<!-- el desplegable de destino es con un select dependiente de "complejo" mediante array en java -->
+			<p class="titulo">Unidad / Destino
+				<select class="input" id="unidad" name="unidad" required>
+					<option value=""> Seleccione Complejo
+				</select>
+			</p>
+			</br>
+
+			<!-- INVOLUCRADO 1-->
+			<label id="involucrado1">
+				<p class="titulo">Tipo
+					<select class="input" id="tipo" name="tipo" required>
+						<option value=""> Seleccione</option>
+						<option> Accidente </option>
+						<option> Autolesion </option>
+						<option> Dolosa </option>
+					</select>
+				</p>
+				<!-- el desplegable de "subtipo" es con un select dependiente de "tipo" mediante array en java -->
+				<p class="titulo">Subtipo <input class="input" id="subtipo" name="subtipo" type="text"
+						placeholder="EJ: Paro cardiorespiratorio, suicidio, otro" autocomplete="off" required></input>
+				</p>
+				<p class="titulo">Relacion en el hecho
+					<select class="input" id="relacionenelhecho" name="relacionenelhecho" required>
+						<option value=""> Seleccione </option>
+						<option>Agresor</option>
+						<option>Agredido</option>
+						<option>Agresor y agredido</option>
+					</select>
+				</p>
+				<p class="titulo">Involucrado
+					<select class="input" id="involucrado" name="involucrado" required>
+						<option value=""> Seleccione</option>
+						<option> Interno</option>
+						<option> Agente</option>
+						<option> Otro </option>
+					</select>
+				</p>
+				<p class="titulo">Nombre completo <input class="input" id="nombre" name="nombre" type="text"
+						class="form-control" placeholder="Ingrese nombre completo" autocomplete="off" required></p>
+				<p class="titulo">Nro. de identificacion <input class="input" id="nroidentificacion"
+						name="nroidentificacion" type="number" min="0" max="99999999" maxlength="8" class="form-control"
+						placeholder="Ingrese númerico sin puntos" required> </input></p>
+				<p class="titulo">Genero
+					<select class="input" id="genero" name="genero" required>
+						<option value=""> Seleccione</option>
+						<option> Masculino</option>
+						<option> Femenino</option>
+						<option> Transgenero </option>
+					</select>
+				</p>
+				<p class="titulo">Edad <input class="input" min="15" max="75" maxlength="2" id="edad" name="edad"
+						type="number" class="form-control" required placeholder="Ingrese edad numerica"></p>
+				<!-- el rango de edad se ingresa automaticamente en base a la edad ingresada -->
+			</label>
+
+			<!-- INVOLUCRADO 2-->
+			<div id="involucrado2">
+				<h5> ESTA SECCION NO ESTA INDEXADA A LA BASE DE DATOS, POR LO QUE MOMENTANEAMENTE ESTA DISABLED</h5>
+				<p class="titulo">Tipo
+					<select class="input" id="tipo" disabled>
+						<option> Accidente </option>
+						<option> Autolesion </option>
+						<option> Dolosas </option>
+					</select>
+				</p>
+				<!-- el desplegable de "subtipo" es con un select dependiente de "tipo" mediante array en java -->
+				<p class="titulo">Subtipo <input class="input" id="subtipo"
+						placeholder="EJ: Paro cardiorespiratorio, suicidio, otro" disabled></input></p>
+				<p class="titulo">Relacion en el hecho
+					<select class="input" id="relacionenelhecho" disabled>
+						<option>Agresor</option>
+						<option>Agredido</option>
+						<option>Agresor y agredido</option>
+					</select>
+				</p>
+				<p class="titulo">Involucrado
+					<select class="input" id="involucrado" disabled>
+						<option> Interno</option>
+						<option> Agente</option>
+						<option> Otro </option>
+					</select>
+				</p>
+				<p class="titulo">Nombre completo <input class="input" id="nombre" placeholder="Ingrese nombre completo"
+						disabled>
+					</input></p>
+				<p class="titulo">Nro. de identificacion <input class="input" id="nroidentificacion"
+						placeholder="Ingrese númerico sin puntos" disabled> </input></p>
+				<p class="titulo">Genero
+					<select class="input" id="genero" disabled>
+						<option> Masculino</option>
+						<option> Femenino</option>
+						<option> Transgenero </option>
+					</select>
+				</p>
+				<p class="titulo"> Edad <input class="input" id="edad" placeholder="Ingrese númerico" disabled> </input>
+				</p>
+				<input class="boton" type="button" name="botonRemover" id="Remover" onclick="removeElemento();"
+					value="Remover involucrado">
+				<!-- el rango de edad se ingresa automaticamente en base a la edad ingresada -->
+			</div>
+
+			<!-- INVOLUCRADO 3-->
+			<div id="involucrado3">
+				<p class="titulo">Tipo
+					<select class="input" id="tipo" disabled>
+						<option> Accidente </option>
+						<option> Autolesion </option>
+						<option> Dolosas </option>
+					</select>
+				</p>
+				<!-- el desplegable de "subtipo" es con un select dependiente de "tipo" mediante array en java -->
+				<p class="titulo">Subtipo <input class="input" id="subtipo"
+						placeholder="EJ: Paro cardiorespiratorio, suicidio, otro" disabled></input></p>
+				<p class="titulo">Relacion en el hecho
+					<select class="input" id="relacionenelhecho" disabled>
+						<option>Agresor</option>
+						<option>Agredido</option>
+						<option>Agresor y agredido</option>
+					</select>
+				</p>
+				<p class="titulo">Involucrado
+					<select class="input" id="involucrado" disabled>
+						<option> Interno</option>
+						<option> Agente</option>
+						<option> Otro </option>
+					</select>
+				</p>
+				<p class="titulo">Nombre completo <input class="input" id="nombreyapellido"
+						placeholder="Ingrese nombre completo"> </input></p>
+				<p class="titulo">Nro. de identificacion <input class="input" id="nroidentificacion"
+						placeholder="Ingrese númerico sin puntos" disabled> </input></p>
+				<p class="titulo">Genero
+					<select class="input" id="genero" disabled>
+						<option> Masculino</option>
+						<option> Femenino</option>
+						<option> Transgenero </option>
+					</select>
+				</p>
+				<p class="titulo"> Edad <input class="input" id="edad" placeholder="Ingrese númerico" disabled> </input>
+				</p>
+				<!-- el rango de edad se ingresa automaticamente en base a la edad ingresada -->
+			</div>
+
+
+
+			<!-- capa que contiene los nuevos inputs al presionar boton agregar-->
+			<input class="boton" type="button" name="botonAgregar" id="Agregar" onclick="addElemento();"
+				value="Agregar involucrado">
+			<button type="submit" class="boton" name="botonCargar" id="Cargar">Registrar Carga</button>
+		</form>
+	</div>
+</body>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+	crossorigin="anonymous"></script>
+<!--Jquery minified 3.6-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!--funcionalidades del proyecto-->
+<script type="text/javascript" src="/js/carga.js"></script>
+<script type="text/javascript" src="/js/botonAddRemove.js"></script>
+<script type="text/javascript" src="/js/cargaVerificacion.js"></script>
+
+</html>
